@@ -20,3 +20,12 @@ def pregunta_10():
 
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t") for d in datos]
+    datos = [[d[0]] + d[-2:] for d in datos]
+    datos = [(d[0], d[1].count(",")+1, d[2].count(":")) for d in datos]
+    
+    return(datos)
+
+if __name__ == "__main__":
+    pregunta_10()

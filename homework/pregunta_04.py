@@ -26,3 +26,11 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t")[2] for d in datos]
+    datos = [d.split("-")[1] for d in datos]
+    return (sorted(set(map(lambda d: (d,datos.count(d)), datos))))
+
+
+if __name__ == "__main__":
+    pregunta_04()

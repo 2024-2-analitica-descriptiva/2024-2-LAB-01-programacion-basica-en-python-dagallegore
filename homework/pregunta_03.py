@@ -15,3 +15,17 @@ def pregunta_03():
     [('A', 53), ('B', 36), ('C', 27), ('D', 31), ('E', 67)]
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t")[0:2] for d in datos]
+    suma = {}
+    for key, value in datos:
+        if key in suma:
+            suma[key] += int(value)
+        else:
+            suma[key] = int(value)
+    lista = [(key, value) for key, value in suma.items()]
+    return sorted(lista)
+
+
+if __name__ == "__main__":
+    pregunta_03()

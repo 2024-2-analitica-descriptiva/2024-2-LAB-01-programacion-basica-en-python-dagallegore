@@ -16,3 +16,23 @@ def pregunta_11():
 
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t") for d in datos]
+    datos = [[d[1]] + [d[3]] for d in datos]
+    #print(datos)
+    suma = {}
+    for lista in datos:
+        #print(lista)
+        lista = [tuple(lista)]
+        #print(lista)
+        for key, value in lista:
+            value = value.split(",")
+            for v in value:
+                if v in suma:
+                    suma[v] += int(key)
+                else:
+                    suma[v] = int(key)
+    return(dict(sorted(suma.items())))
+
+if __name__ == "__main__":
+    pregunta_11()

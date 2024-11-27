@@ -15,3 +15,10 @@ def pregunta_02():
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t")[0] for d in datos]
+    return (sorted(set(map(lambda d: (d,datos.count(d)), datos))))
+
+
+if __name__ == "__main__":
+    pregunta_02()

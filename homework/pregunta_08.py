@@ -27,3 +27,23 @@ def pregunta_08():
      (9, ['A', 'B', 'C', 'E'])]
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t")[0:2] for d in datos]
+    datos = [tuple(d) for d in datos]
+    #print(datos)
+    rta = {}
+    for value, key in datos:
+        if int(key) in rta:
+            if value not in rta[int(key)]:
+                rta[int(key)].append(value)
+        else:
+            rta[int(key)] = [value]
+
+    for key in rta:
+        rta[key] = sorted(rta[key])
+    return(sorted(rta.items()))
+
+
+
+if __name__ == "__main__":
+    pregunta_08()

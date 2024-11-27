@@ -15,3 +15,28 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t") for d in datos]
+    datos = [[d[0]] + [d[4][:-1]] for d in datos]
+    print(datos)
+    suma = {}
+    for lista in datos:
+        #print(lista)
+        lista = [tuple(lista)]
+        #print(lista)
+        for key, value in lista:
+            value = value.replace(",",":")
+            value = value.split(":")
+            print(key)
+            c = 0
+            for v in value:
+                if c%2 == 1:
+                    if key in suma:
+                        suma[key] += int(v)
+                    else:
+                        suma[key] = int(v)
+                c += 1
+    return(dict(sorted(suma.items())))
+
+if __name__ == "__main__":
+    pregunta_12()

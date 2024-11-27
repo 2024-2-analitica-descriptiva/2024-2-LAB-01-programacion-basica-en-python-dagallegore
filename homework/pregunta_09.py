@@ -24,3 +24,23 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    datos = open("files/input/data.csv","r").readlines()
+    datos = [d.split("\t")[4] for d in datos]
+    datos = [d[:-1] for d in datos]
+    datos = [d.split(",") for d in datos]
+    rta = {}
+    for sublist in datos:
+        sublist = [s.split(":")[0] for s in sublist]
+        for s in sublist:
+            if s in rta:
+                rta[s] += 1
+            else:
+                rta[s] = 1
+    rta = sorted(rta.items())
+    final = {}
+    for r, value in rta:
+        final[r] = value
+    return(final)
+
+if __name__ == "__main__":
+    pregunta_09()
